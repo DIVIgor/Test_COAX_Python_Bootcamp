@@ -6,6 +6,23 @@ from moviepy.editor import VideoFileClip
 
 # Task #1
 s = "Python Bootcamp"
+
+class SavedHashes:
+    # dict to save hash values
+    hashes = {}
+    
+    def hash_string(self, string):
+        if string not in self.hashes.values():
+            output_hash = len(self.hashes) + 1
+            self.hashes[output_hash] = string
+            return output_hash
+        else:
+            return tuple(self.hashes.keys())[tuple(self.hashes.values()).index(string)]
+
+sh = SavedHashes()
+print(f'Result by SavedHashes class: {sh.hash_string(s)}')
+print(sh.hash_string(s))
+# Another way
 h = hash(s)
 print(h)
 # saving the hash and the value into a hash table to have access to the data in future
